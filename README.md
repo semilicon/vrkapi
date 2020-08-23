@@ -1,5 +1,5 @@
-# [vrkapi][vrkapi-link]
+# [vrkapi](vrkapi)
 > API for ASU VRK via ole-object (php; only windows)
 
 # Documentation
-[here][vrkapi/docs-link]
+[here](vrkapi/docs)
