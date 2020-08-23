@@ -1,0 +1,41 @@
+<?php
+	//add_wagon
+	global $ASUVRK;
+	$IND=(isset($_GET['IND']))?intval(trim($_GET['IND'])):-1;
+	//$TypRemont=2;
+	$SID=-1;
+	$Ftype=-1;
+	$contractsF=array();
+	$contracts=array();
+	for($TypRemont=0;$TypRemont<10;$TypRemont++){
+		$CS=$ASUVRK->GetContracts($IND,$TypRemont,$SID,$Ftype);
+		for($i=0;$i<$CS->Count;$i++){
+			$contract=$CS->GetContract($i);
+			if(!isset($contractsF[$contract->IND])){
+				$contractsF[$contract->IND]=(object)array(
+					'IND'=>(string)$contract->IND,
+					'NOMER'=>iconv('CP1251',"UTF-8",(string)$contract->NOMER),
+					'FromDate'=>(string)$contract->FromDate,
+					'BeginFrom'=>(string)$contract->BeginFrom,
+					'EndTo'=>(string)$contract->EndTo,
+					'SID'=>(string)$contract->SID,
+					'SNAME'=>iconv('CP1251',"UTF-8",(string)$contract->SNAME),
+					'DepoID'=>(string)$contract->DepoID,
+					'DepoName'=>iconv('CP1251',"UTF-8",(string)$contract->DepoName),
+					'TypRemont'=>array($TypRemont)
+				);
+			}else{
+				$contractsF[$contract->IND]->TypRemont[]=$TypRemont;
+			}
+		}
+	}
+	$contracts=array();
+	foreach($contractsF as $key=>$val){
+		$contracts[]=$val;
+	}
+	$return=(object)array(
+		'success'=>true,
+		'result'=>$contracts
+	);
+	echo json_encode($return);
+?>

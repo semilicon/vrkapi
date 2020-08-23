@@ -1,0 +1,6 @@
+{
+  "debug":false,
+  "public_key":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+  "secret_key":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+  "default_timezone":"Europe/Moscow"
+}

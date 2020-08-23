@@ -1,0 +1,7 @@
+<?php
+	$AsuVrkUser=(object)array(
+		'host'=>"localhost",
+		'user'=>"username",
+		'password'=>"password"
+	);
+?>
